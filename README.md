@@ -16,6 +16,7 @@ SA_SECRET="$(kubectl get secret -n kube-system \
 kubectl get secret -n kube-system ${SA_SECRET} \
   -o json | jq -r '.data.token' | base64 -d; echo
 ```
+> secret looks something like `dashboard-admin-sa-token-xxxxx`
 
 start the proxy
 ```bash
