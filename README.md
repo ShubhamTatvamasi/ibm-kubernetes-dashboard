@@ -14,7 +14,7 @@ SA_SECRET="$(kubectl get secret -n kube-system \
   --sort-by=.metadata.creationTimestamp | tail -1 | awk '{print $1}')"
 
 kubectl get secret -n kube-system ${SA_SECRET} \
-  -o json | jq -r '.data.token' | base64 -d; echo
+  -o jsonpath={'.data.token'} | base64 -d; echo
 ```
 > secret looks something like `dashboard-admin-sa-token-xxxxx`
 
